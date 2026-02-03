@@ -1,132 +1,166 @@
+// components/OurProjectsSection.js
 import { colors } from '../../styles/colors';
 
-export default function OurProjectsSection() {
-  const projects = [
-    {
-      title: 'Luxury Apartments',
-      location: 'Downtown District',
-      price: '$250,000 - $450,000',
-      status: 'Available',
-      image: '/api/placeholder/300/200'
-    },
-    {
-      title: 'Commercial Complex',
-      location: 'Business Hub',
-      price: '$500,000 - $1,200,000',
-      status: 'Pre-Launch',
-      image: '/api/placeholder/300/200'
-    },
-    {
-      title: 'Villa Community',
-      location: 'Suburban Area',
-      price: '$350,000 - $750,000',
-      status: 'Under Construction',
-      image: '/api/placeholder/300/200'
-    }
-  ];
+// For real project, replace these placeholder image paths with your actual assets
+// Example: import greenValley1 from '../../assets/green-valley-1.jpg';
+// Then use src={greenValley1} in <img />
 
+const projectData = [
+  { image: '/our-projects-image1', price: '₹14,500 / sqyd' },
+  { image: '/our-projects-image2', price: '₹14,500 / sqyd' },
+  { image: '/our-projects-image3', price: '₹14,500 / sqyd' },
+  { image: '/our-projects-image4', price: '₹14,500 / sqyd' },
+  { image: '/our-projects-image5', price: '₹14,500 / sqyd' },
+  { image: '/our-projects-image6', price: '₹14,500 / sqyd' },
+];
+
+export default function OurProjectsSection() {
   return (
     <section style={{
-      padding: '5rem 0',
-      backgroundColor: colors.background
+      padding: '5rem 1rem',
+      backgroundColor: colors.background || '#f9fafb',
     }}>
       <div style={{
-        maxWidth: '1200px',
+        maxWidth: '1400px',
         margin: '0 auto',
-        padding: '0 1rem'
       }}>
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        {/* Heading & Subtext */}
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 style={{
-            fontSize: '2.5rem',
-            fontWeight: 'bold',
-            color: colors.text,
-            marginBottom: '1rem'
+            fontSize: 'clamp(2.2rem, 5vw, 3.2rem)',
+            fontWeight: '700',
+            color: colors.text || '#111827',
+            marginBottom: '1rem',
           }}>
             Our Projects
           </h2>
           <p style={{
-            fontSize: '1.1rem',
-            color: colors.textLight,
-            maxWidth: '600px',
-            margin: '0 auto'
+            fontSize: '1.2rem',
+            color: colors.textLight || '#4b5563',
+            maxWidth: '720px',
+            margin: '0 auto',
+            lineHeight: 1.6,
           }}>
-            Explore our premium real estate projects designed for modern living and investment success
+            Handpicked open plots with high appreciation potential and
+            <br />
+            100% legal clarity.
           </p>
         </div>
 
+        {/* Projects Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+          gap: '2rem 1.8rem',
         }}>
-          {projects.map((project, index) => (
-            <div key={index} style={{
-              backgroundColor: colors.background,
-              borderRadius: '10px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-              border: `1px solid ${colors.border}`
-            }}>
-              <div style={{
-                height: '200px',
-                backgroundColor: colors.backgroundLight,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: colors.textLight
-              }}>
-                Project Image
+          {projectData.map((project, index) => (
+            <div
+              key={index}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 6px 20px rgba(0,0,0,0.08)',
+                transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px)';
+                e.currentTarget.style.boxShadow = '0 12px 30px rgba(0,0,0,0.12)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.08)';
+              }}
+            >
+              {/* Image */}
+              <div style={{ height: '260px', overflow: 'hidden' }}>
+                <img
+                  src={project.image}
+                  alt="Green Valley Phase"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.4s ease',
+                  }}
+                  onMouseEnter={(e) => e.target.style.transform = 'scale(1.06)'}
+                  onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                />
               </div>
-              <div style={{ padding: '1.5rem' }}>
+
+              {/* Content */}
+              <div style={{ padding: '1.5rem 1.6rem 1.8rem' }}>
                 <h3 style={{
-                  fontSize: '1.5rem',
+                  fontSize: '1.4rem',
                   fontWeight: '600',
-                  color: colors.text,
-                  marginBottom: '0.5rem'
+                  color: colors.text || '#111827',
+                  marginBottom: '0.6rem',
                 }}>
-                  {project.title}
+                  Green Valley Phase
                 </h3>
+
                 <p style={{
-                  color: colors.textLight,
-                  marginBottom: '1rem'
+                  fontSize: '1rem',
+                  color: '#6b7280',
+                  marginBottom: '0.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
                 }}>
-                  📍 {project.location}
+                  📍 Shadnagar, Hyderabad
                 </p>
+
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.6rem',
+                  marginBottom: '1.1rem',
+                }}>
+                  <span style={{
+                    backgroundColor: '#ecfdf5',
+                    color: '#10b981',
+                    padding: '0.35rem 0.9rem',
+                    borderRadius: '999px',
+                    fontSize: '0.9rem',
+                    fontWeight: '500',
+                  }}>
+                    RERA Approved
+                  </span>
+                  <span style={{
+                    backgroundColor: '#fef3c7',
+                    color: '#d97706',
+                    padding: '0.35rem 0.9rem',
+                    borderRadius: '999px',
+                    fontSize: '0.9rem',
+                    fontWeight: '500',
+                  }}>
+                    Ongoing
+                  </span>
+                </div>
+
                 <div style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: '1rem'
                 }}>
-                  <span style={{
-                    fontSize: '1.25rem',
-                    fontWeight: '600',
-                    color: colors.primary
+                  <div style={{
+                    fontSize: '1.35rem',
+                    fontWeight: '700',
+                    color: colors.primary || '#1d4ed8',
                   }}>
                     {project.price}
-                  </span>
-                  <span style={{
-                    padding: '0.25rem 0.75rem',
-                    backgroundColor: colors.accent,
-                    color: colors.background,
-                    borderRadius: '15px',
-                    fontSize: '0.875rem'
+                  </div>
+
+                  <div style={{
+                    fontSize: '1.8rem',
+                    color: colors.primary || '#1d4ed8',
+                    fontWeight: 'bold',
+                    lineHeight: 1,
                   }}>
-                    {project.status}
-                  </span>
+                    →
+                  </div>
                 </div>
-                <button style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  backgroundColor: colors.primary,
-                  color: colors.background,
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  fontWeight: '600'
-                }}>
-                  View Details
-                </button>
               </div>
             </div>
           ))}
