@@ -3,6 +3,8 @@ export const colors = {
   primaryDark: '#1d4ed8',
   secondary: '#f59e0b',
   accent: '#10b981',
+  button: '#C9A24D',
+  investGreen: '#1F6F54',
   background: '#ffffff',
   backgroundLight: '#f8fafc',
   text: '#1f2937',
