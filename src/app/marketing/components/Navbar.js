@@ -1,9 +1,8 @@
-// components/Navbar.js
-'use client'; // Required for client-side interactivity (dropdown)
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { colors } from '../styles/colors'; // Adjust path if needed
+import { Search, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
@@ -11,12 +10,11 @@ export default function Navbar() {
   return (
     <nav
       style={{
-        backgroundColor: 'white', // or colors.background if it's white
-        boxShadow: '0 2px 10px rgba(0,0,0,0.08)',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid #e5e7eb',
         position: 'sticky',
         top: 0,
         zIndex: 1000,
-        padding: '1rem 0',
       }}
     >
       <div
@@ -24,61 +22,48 @@ export default function Navbar() {
           maxWidth: '1400px',
           margin: '0 auto',
           padding: '0 2rem',
+          height: '72px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
       >
-        {/* Logo - Left */}
+        {/* LOGO */}
         <Link
           href="/"
           style={{
-            fontSize: '2rem',
-            fontWeight: 'bold',
-            color: colors.primary || '#1e40af', // adjust to your brand color
+            fontSize: '1.6rem',
+            fontWeight: '700',
+            color: '#111827',
             textDecoration: 'none',
-            letterSpacing: '-0.5px',
+            letterSpacing: '-0.3px',
           }}
         >
           LOGO
         </Link>
 
-        {/* Centered Navigation */}
+        {/* CENTER NAV */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '2.5rem',
+            gap: '2.2rem',
             position: 'absolute',
             left: '50%',
             transform: 'translateX(-50%)',
           }}
         >
-          <Link
-            href="/"
-            style={{
-              color: colors.text || '#374151',
-              fontWeight: '500',
-              textDecoration: 'none',
-              fontSize: '1.05rem',
-            }}
-          >
-            Home
-          </Link>
+          {['Home', 'About'].map((item) => (
+            <Link
+              key={item}
+              href={item === 'Home' ? '/' : `/marketing/${item.toLowerCase()}`}
+              style={navLink}
+            >
+              {item}
+            </Link>
+          ))}
 
-          <Link
-            href="/about"
-            style={{
-              color: colors.text || '#374151',
-              fontWeight: '500',
-              textDecoration: 'none',
-              fontSize: '1.05rem',
-            }}
-          >
-            About
-          </Link>
-
-          {/* Projects with Dropdown */}
+          {/* PROJECTS DROPDOWN */}
           <div
             style={{ position: 'relative' }}
             onMouseEnter={() => setIsProjectsOpen(true)}
@@ -86,132 +71,92 @@ export default function Navbar() {
           >
             <button
               style={{
+                ...navLink,
                 background: 'none',
                 border: 'none',
-                color: colors.text || '#374151',
-                fontWeight: '500',
-                fontSize: '1.05rem',
-                cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.35rem',
+                gap: '0.25rem',
+                cursor: 'pointer',
               }}
             >
               Projects
-              <span style={{ fontSize: '0.8rem' }}>▼</span>
+              <ChevronDown size={16} />
             </button>
 
             {isProjectsOpen && (
               <div
                 style={{
                   position: 'absolute',
-                  top: '100%',
+                  top: '110%',
                   left: '50%',
                   transform: 'translateX(-50%)',
-                  backgroundColor: 'white',
-                  borderRadius: '8px',
-                  boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+                  backgroundColor: '#ffffff',
+                  borderRadius: '10px',
+                  boxShadow: '0 12px 30px rgba(0,0,0,0.12)',
                   minWidth: '220px',
-                  padding: '0.75rem 0',
-                  marginTop: '0.5rem',
-                  zIndex: 10,
+                  padding: '0.6rem 0',
                 }}
               >
-                <Link
-                  href="/projects/ongoing"
-                  style={{
-                    display: 'block',
-                    padding: '0.75rem 1.5rem',
-                    color: '#374151',
-                    textDecoration: 'none',
-                    fontSize: '1rem',
-                  }}
-                  onClick={() => setIsProjectsOpen(false)}
-                >
-                  Ongoing Projects
-                </Link>
-                <Link
-                  href="/projects/completed"
-                  style={{
-                    display: 'block',
-                    padding: '0.75rem 1.5rem',
-                    color: '#374151',
-                    textDecoration: 'none',
-                    fontSize: '1rem',
-                  }}
-                  onClick={() => setIsProjectsOpen(false)}
-                >
-                  Completed Projects
-                </Link>
-                <Link
-                  href="/projects/upcoming"
-                  style={{
-                    display: 'block',
-                    padding: '0.75rem 1.5rem',
-                    color: '#374151',
-                    textDecoration: 'none',
-                    fontSize: '1rem',
-                  }}
-                  onClick={() => setIsProjectsOpen(false)}
-                >
-                  Upcoming Projects
-                </Link>
+                {['Ongoing Projects', 'Completed Projects', 'Upcoming Projects'].map(
+                  (item) => (
+                    <Link
+                      key={item}
+                      href={`/projects/${item.split(' ')[0].toLowerCase()}`}
+                      style={{
+                        display: 'block',
+                        padding: '0.75rem 1.4rem',
+                        fontSize: '0.95rem',
+                        color: '#374151',
+                        textDecoration: 'none',
+                      }}
+                    >
+                      {item}
+                    </Link>
+                  )
+                )}
               </div>
             )}
           </div>
 
-          <Link
-            href="/blogs"
-            style={{
-              color: colors.text || '#374151',
-              fontWeight: '500',
-              textDecoration: 'none',
-              fontSize: '1.05rem',
-            }}
-          >
-            Blogs
-          </Link>
-
-          <Link
-            href="/gallery"
-            style={{
-              color: colors.text || '#374151',
-              fontWeight: '500',
-              textDecoration: 'none',
-              fontSize: '1.05rem',
-            }}
-          >
-            Gallery
-          </Link>
+          {['Blogs', 'Gallery'].map((item) => (
+            <Link
+              key={item}
+              href={`/${item.toLowerCase()}`}
+              style={navLink}
+            >
+              {item}
+            </Link>
+          ))}
         </div>
 
-        {/* Right side - Search + Enquire Now */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        {/* RIGHT ACTIONS */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.4rem' }}>
           <button
+            aria-label="Search"
             style={{
               background: 'none',
               border: 'none',
-              fontSize: '1.4rem',
-              color: colors.text || '#4b5563',
               cursor: 'pointer',
+              color: '#4b5563',
+              padding: 0,
             }}
-            aria-label="Search"
           >
-            🔍
+            <Search size={20} />
           </button>
 
           <button
             style={{
-              backgroundColor: colors.button || '#d97706', // gold/amber shade like in image
-              color: 'white',
-              padding: '0.75rem 1.8rem',
-              borderRadius: '9999px', // pill shape
+              backgroundColor: '#C9A24D',
+              color: '#ffffff',
+              padding: '0.6rem 1.6rem',
+              borderRadius: '9999px',
               border: 'none',
+              fontSize: '0.95rem',
               fontWeight: '600',
-              fontSize: '1rem',
               cursor: 'pointer',
-              boxShadow: '0 4px 12px rgba(217,119,6,0.25)',
             }}
+            onClick={() => window.location.href = '/marketing/getintouch'}
           >
             Enquire Now
           </button>
@@ -220,3 +165,10 @@ export default function Navbar() {
     </nav>
   );
 }
+
+const navLink = {
+  fontSize: '0.95rem',
+  fontWeight: '500',
+  color: '#374151',
+  textDecoration: 'none',
+};

@@ -1,119 +1,180 @@
-import { colors } from '../../styles/colors';
+"use client";
+
+import { Phone, Mail } from "lucide-react";
 
 export default function QuickQuerySection() {
   return (
-    <section style={{
-      padding: '5rem 0',
-      backgroundColor: colors.primary,
-      color: colors.background
-    }}>
-      <div style={{
-        maxWidth: '800px',
-        margin: '0 auto',
-        padding: '0 1rem',
-        textAlign: 'center'
-      }}>
-        <h2 style={{
-          fontSize: '2.5rem',
-          fontWeight: 'bold',
-          marginBottom: '1rem'
-        }}>
-          Have a Quick Query?
-        </h2>
-        <p style={{
-          fontSize: '1.1rem',
-          marginBottom: '2rem',
-          opacity: 0.9
-        }}>
-          Get in touch with our experts for personalized assistance and property recommendations
-        </p>
-
-        <form style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1rem',
-          maxWidth: '500px',
-          margin: '0 auto'
-        }}>
-          <input
-            type="text"
-            placeholder="Your Name"
+    <section
+      style={{
+        backgroundColor: "#1F6F54",
+        padding: "5rem 0",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 1.5rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "4rem",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* LEFT CONTENT */}
+        <div style={{ flex: 1, color: "#FFFFFF", minWidth: "320px" }}>
+          <h2
             style={{
-              padding: '1rem',
-              borderRadius: '5px',
-              border: 'none',
-              fontSize: '1rem'
-            }}
-          />
-          <input
-            type="email"
-            placeholder="Your Email"
-            style={{
-              padding: '1rem',
-              borderRadius: '5px',
-              border: 'none',
-              fontSize: '1rem'
-            }}
-          />
-          <input
-            type="tel"
-            placeholder="Your Phone"
-            style={{
-              padding: '1rem',
-              borderRadius: '5px',
-              border: 'none',
-              fontSize: '1rem'
-            }}
-          />
-          <textarea
-            placeholder="Your Message"
-            rows="4"
-            style={{
-              padding: '1rem',
-              borderRadius: '5px',
-              border: 'none',
-              fontSize: '1rem',
-              resize: 'vertical'
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              padding: '1rem 2rem',
-              backgroundColor: colors.secondary,
-              color: colors.background,
-              border: 'none',
-              borderRadius: '5px',
-              fontSize: '1.1rem',
-              fontWeight: '600',
-              cursor: 'pointer'
+              fontSize: "2.6rem",
+              fontWeight: "700",
+              marginBottom: "1.2rem",
+              lineHeight: "1.2",
             }}
           >
-            Send Message
-          </button>
-        </form>
+            Ready to find your dream plot?
+          </h2>
 
-        <div style={{
-          marginTop: '3rem',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '3rem',
-          flexWrap: 'wrap'
-        }}>
-          <div>
-            <h4 style={{ marginBottom: '0.5rem' }}>Call Us</h4>
-            <p style={{ opacity: 0.9 }}>+1 (555) 123-4567</p>
+          <p
+            style={{
+              fontSize: "1.05rem",
+              opacity: 0.9,
+              maxWidth: "520px",
+              marginBottom: "2.5rem",
+              lineHeight: "1.6",
+            }}
+          >
+            Schedule a free site visit this weekend. We provide
+            complimentary pick-up and drop-off services for site
+            inspections.
+          </p>
+
+          {/* CONTACT INFO */}
+          <div
+            style={{
+              display: "flex",
+              gap: "2.5rem",
+              flexWrap: "wrap",
+            }}
+          >
+            {/* Phone */}
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  backgroundColor: "#EAF5F1",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Phone size={20} color="#1F6F54" />
+              </div>
+              <div>
+                <div style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+                  Contact Us
+                </div>
+                <strong style={{ fontSize: "1rem" }}>
+                  +91 9876543212
+                </strong>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "50%",
+                  backgroundColor: "#EAF5F1",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Mail size={20} color="#1F6F54" />
+              </div>
+              <div>
+                <div style={{ fontSize: "0.9rem", opacity: 0.8 }}>
+                  Email Us
+                </div>
+                <strong style={{ fontSize: "1rem" }}>
+                  realestate@gmail.com
+                </strong>
+              </div>
+            </div>
           </div>
-          <div>
-            <h4 style={{ marginBottom: '0.5rem' }}>Email Us</h4>
-            <p style={{ opacity: 0.9 }}>info@realestate.com</p>
-          </div>
-          <div>
-            <h4 style={{ marginBottom: '0.5rem' }}>Visit Us</h4>
-            <p style={{ opacity: 0.9 }}>123 Business St, City</p>
-          </div>
+        </div>
+
+        {/* RIGHT FORM CARD */}
+        <div
+          style={{
+            width: "360px",
+            backgroundColor: "#FFFFFF",
+            borderRadius: "12px",
+            padding: "2rem",
+            boxShadow: "0 12px 30px rgba(0,0,0,0.15)",
+          }}
+        >
+          <h3
+            style={{
+              fontSize: "1.2rem",
+              fontWeight: "600",
+              marginBottom: "1.5rem",
+              color: "#111827",
+            }}
+          >
+            Quick Enquiry
+          </h3>
+
+          <form style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <input
+              type="text"
+              placeholder="Enter Name"
+              style={inputStyle}
+            />
+            <input
+              type="tel"
+              placeholder="Enter Phone Number"
+              style={inputStyle}
+            />
+            <input
+              type="text"
+              placeholder="Green Valley Phase I"
+              style={inputStyle}
+            />
+
+            <button
+              type="submit"
+              style={{
+                marginTop: "0.5rem",
+                backgroundColor: "#C9A24D",
+                color: "#FFFFFF",
+                padding: "0.75rem",
+                border: "none",
+                borderRadius: "6px",
+                fontWeight: "600",
+                cursor: "pointer",
+                fontSize: "0.95rem",
+              }}
+            >
+              Request Callback
+            </button>
+          </form>
         </div>
       </div>
     </section>
   );
 }
+
+const inputStyle = {
+  width: "100%",
+  padding: "0.7rem 0.75rem",
+  borderRadius: "6px",
+  border: "1px solid #D1D5DB",
+  fontSize: "0.9rem",
+  outline: "none",
+};
